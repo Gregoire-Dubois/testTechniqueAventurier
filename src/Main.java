@@ -7,14 +7,19 @@ public class Main {
         UseTextFile useTextFile = new UseTextFile();
         String map = useTextFile.readFileText();
 
-        // Add all characteres bi dimensional array and Display map
-        // afficher tous les éléments dans arrayMaker
+        // ajout des caractères dans un tableau bi-dimensionnel et l'afficher
+        // Afficher tous les éléments dans arrayMaker et afficher la carte de jeu
         for (Character[] row : useTextFile.arrayMaker(map)) {
             System.out.print(" ");
             for (Character ch : row) {
                 System.out.print(ch);
             }
         }
+
+
+
+
+
     }
 }
 
@@ -30,9 +35,13 @@ public class Main {
 *   -> Si coordonnées OK
 *       -> Demander les coordonnées d'arrivée
 *               -> Si coordonées impossibles ou incorrectes boucler pour demander d'autres coordonnées
+*                   -> n'accepter que des valeurs numériques entre 0 et 19
+*                   -> exclure les autres caractères
+*
 * 6) Demander les caps à suivre sous forme de 'char' : N S E O
+*   -> exclure tout autre type de données entrées
 *   -> Chaque char correspond à une case
-*       -> Récupérer les caps sous forme de 'STR'   exemple : NNSSEESS
+*       -> Récupérer les caps sous forme de 'STR' exemple : NNSSEESS
 *           -> Parcourir les caps 'char' par 'char'
 *           -> N = +1 / S = -1 / E= -1 / O= +1
 *
@@ -41,7 +50,4 @@ public class Main {
 *               -> utilisation d'une boucle for pour appliquer les valeurs de déplacement
 *
 * Idée : mettre un caractère particulier pour matériler le point de départ et le point d'arrivée (si les coordonnées sont valides)
-*
-*
-*
 * */
