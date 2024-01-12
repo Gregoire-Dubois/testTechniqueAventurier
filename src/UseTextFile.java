@@ -24,7 +24,7 @@ public class UseTextFile {
 
 
     // méthode pour récupérer chaque caractère de la string pour la placer dans un char dans un tableau à 2 dimensions
-    protected Character[][] arrayMaker(String readeDataTextFile){
+    protected Character[][] mapPrinter(String readeDataTextFile){
         Character[][] car = new Character[20][21];
 
         int index = 0;

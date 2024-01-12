@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -40,16 +41,21 @@ public class Game {
         return positions;
     }
 
-    protected void checkPositionsInMap(ArrayList positions){
+    protected void checkPositionsInMap(ArrayList positions) throws IOException {
         // ici tester que les coordonées saisies ne tombent pas sur des zones interdites
 
+        // récupérer le tableau de données pour vérifier si les coordonnées sont # ou vides
         int xPosition = (int) positions.get(0);
         int yPosition = (int) positions.get(1);
 
+        UseTextFile useTextFile = new UseTextFile();
+        String map = useTextFile.readFileText();
 
+        Character[][] x = new Character[20][21];
+        x = useTextFile.mapPrinter(map);
 
-        System.out.println(xPosition);
-        System.out.println(yPosition);
+        // vérifier si la cases est égale à # ou vide
+        System.out.println(x[xPosition][yPosition]);
 
     }
 }

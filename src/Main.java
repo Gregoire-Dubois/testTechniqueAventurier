@@ -10,7 +10,7 @@ public class Main {
 
         // ajout des caractères dans un tableau bi-dimensionnel et l'afficher
         // Afficher tous les éléments dans arrayMaker et afficher la carte de jeu
-        for (Character[] row : useTextFile.arrayMaker(map)) {
+        for (Character[] row : useTextFile.mapPrinter(map)) {
             System.out.print(" ");
             for (Character ch : row) {
                 System.out.print(ch);
