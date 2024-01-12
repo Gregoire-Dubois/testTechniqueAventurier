@@ -40,13 +40,11 @@ public class Game {
         return positions;
     }
 
-    protected void checkPositionsInMap(ArrayList positions,UseTextFile arrayMaker){
+    protected void checkPositionsInMap(ArrayList positions){
         // ici tester que les coordonées saisies ne tombent pas sur des zones interdites
 
         int xPosition = (int) positions.get(0);
         int yPosition = (int) positions.get(1);
-
-
 
 
 
