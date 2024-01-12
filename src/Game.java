@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -6,8 +7,13 @@ public class Game {
     public Game(){
 
     }
+    /*Get positions with input
+    * If positions are OK continue
+    * If int are bigger or smaller than array, make info to user
+    * */
+    protected ArrayList inputPositions(){
 
-    protected void testPositions(){
+        ArrayList positions = new ArrayList<>();
 
         try{
             Scanner scannerXPositionStart = new Scanner(System.in);
@@ -21,7 +27,9 @@ public class Game {
             int inputY = scannerYPositionStart.nextInt();
 
             if (inputX >= 0 && inputX <= 19 && inputY >= 0 && inputY <= 19)  {
-                System.out.println("ok");
+                positions.add(inputX);
+                positions.add(inputY);
+
             } else {
                 System.out.println("Les valeurs autorisées sont des nombres entiers entre 0 et 19 inclus");
             }
@@ -29,5 +37,21 @@ public class Game {
         }catch (InputMismatchException e){
             System.out.println("merci d'indiquer des nombres entiers");
         }
+        return positions;
+    }
+
+    protected void checkPositionsInMap(ArrayList positions,UseTextFile arrayMaker){
+        // ici tester que les coordonées saisies ne tombent pas sur des zones interdites
+
+        int xPosition = (int) positions.get(0);
+        int yPosition = (int) positions.get(1);
+
+
+
+
+
+        System.out.println(xPosition);
+        System.out.println(yPosition);
+
     }
 }

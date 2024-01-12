@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -16,8 +17,12 @@ public class Main {
             }
         }
 
+        // retieve position with the user
         Game game = new Game();
-        game.testPositions();
+        ArrayList positions = game.inputPositions();
+
+        // Check if position is OK on the map
+        game.checkPositionsInMap(positions);
 
     }
 }
