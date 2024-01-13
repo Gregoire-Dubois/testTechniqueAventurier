@@ -41,8 +41,7 @@ public class Main {
 
         ArrayList directions = move.retrieveDirections();
 
-        move.movePlayer(directions);
-
+        move.movePlayer(startPositions, endPositions, directions, map);
 
     }
 }

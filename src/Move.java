@@ -34,38 +34,41 @@ public class Move {
     }
 
     // réaliser les déplacements du joueur
-    protected void movePlayer(ArrayList directions){
-
-        // ajouter le point de départ et d'arrivée en paramètres ?
+    protected void movePlayer(ArrayList startPoint, ArrayList endPoint,  ArrayList directions, String map){
         // charger la map aussi en paramètres ?
+
+        // récupération des coordonnées de départ
+        int startX = (int) startPoint.get(0);
+        int startY = (int) startPoint.get(1);
+
+        // récupération des coordonnées d'arrivées
+        int endX = (int) endPoint.get(0);
+        int endY = (int) endPoint.get(1);
+
         for (int i = 0; i< directions.size(); i++){
             Character orientation = (Character) directions.get(i);
             switch (orientation){
                 case 'N' :
-                    //cap au nord = x0, y-1
+                    //cap au nord = x actuel, y-1
 
                     break;
                 case 'S' :
-                    //cap au sud = x0, y+1
+                    //cap au sud = x actuel, y+1
 
 
                     break;
                 case 'E' :
-                    //cap à l'est = x+1, y0
+                    //cap à l'est = x+1, y actuel
 
 
                     break;
                 case 'O' :
-                    //cap ç l'ouest x-1, y0
+                    //cap à l'ouest x-1, y actuel
 
                     break;
             }
         }
-
-
-
-
+        System.out.println(map);
     }
-
 }
 
