@@ -24,32 +24,30 @@ public class UseTextFile {
 
 
     // méthode pour récupérer chaque caractère de la string pour la placer dans un char dans un tableau à 2 dimensions
-    protected Character[][] mapPrinter(String readeDataTextFile){
-        Character[][] car = new Character[20][21];
+    protected Character[][] mapMaker(String readeDataTextFile){
+        Character[][] map = new Character[20][21];
 
         int index = 0;
 
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 21; j++) {
                 if (index < readeDataTextFile.length()) {
-                    car[i][j] = readeDataTextFile.charAt(index++);
+                    map[i][j] = readeDataTextFile.charAt(index++);
                 }
             }
         }
-
-        return car;
+        return map;
     }
 
     // méthode pour afficher la carte de jeu
     protected void displayMap(String map){
     UseTextFile useTextFile = new UseTextFile();
 
-        for (Character[] row : useTextFile.mapPrinter(map)) {
+        for (Character[] row : useTextFile.mapMaker(map)) {
             System.out.print(" ");
             for (Character ch : row) {
                 System.out.print(ch);
             }
         }
     }
-
 }

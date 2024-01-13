@@ -18,12 +18,12 @@ public class Game {
 
         try{
             Scanner scannerXPositionStart = new Scanner(System.in);
-            System.out.println("Entrez la valeur du point de départ (X entre 0 à 19 inclus uniquement)");
+            System.out.println("Entrez les coordonnées de X situées entre 0 à 19 inclus)");
             System.out.println("Exemple : 2  -> ");
             int inputX = scannerXPositionStart.nextInt();
 
             Scanner scannerYPositionStart = new Scanner(System.in);
-            System.out.println("Entrez la valeur du point de départ (Y prévue entre 0 à 19 inclus uniquement)");
+            System.out.println("Entrez les coordonnées de Y situées entre 0 à 19 inclus");
             System.out.println("Exemple : 10  -> ");
             int inputY = scannerYPositionStart.nextInt();
 
@@ -41,21 +41,37 @@ public class Game {
         return positions;
     }
 
-    protected void checkPositionsInMap(ArrayList positions) throws IOException {
+    protected boolean checkPositionsInMap(ArrayList positions) throws IOException {
         // ici tester que les coordonées saisies ne tombent pas sur des zones interdites
-
         // récupérer le tableau de données pour vérifier si les coordonnées sont # ou vides
-        int xPosition = (int) positions.get(0);
-        int yPosition = (int) positions.get(1);
+        Boolean responsePosition = true;
+
+        int xPosition = 0;
+        int yPosition = 0;
+        try{
+            xPosition = (int) positions.get(0);
+            yPosition = (int) positions.get(1);
+        }catch (IndexOutOfBoundsException e){
+            System.out.println("Seuls des nombres entiers situés entre 0 et 19 sont admis");
+        }
 
         UseTextFile useTextFile = new UseTextFile();
         String map = useTextFile.readFileText();
 
-        Character[][] x = new Character[20][21];
-        x = useTextFile.mapPrinter(map);
+        Character[][] topography = new Character[20][21];
+        topography = useTextFile.mapMaker(map);
 
         // vérifier si la case est égale à # ou vide
-        System.out.println(x[xPosition][yPosition]);
-
+        System.out.println(topography[xPosition][yPosition]);
+        if (topography[xPosition][yPosition] == '#'){
+            System.out.println("===============================================================");
+            System.out.println("Coordonnées impossibles, vous êtes dans la forêt impénétrable !");
+            System.out.println("===============================================================");
+            System.out.println();
+            responsePosition = false;
+        }
+        return responsePosition;
     }
+
+
 }

@@ -12,12 +12,31 @@ public class Main {
         // Afficher tous les éléments dans arrayMaker et afficher la carte de jeu
          useTextFile.displayMap(map);
 
-        // retieve position with the user
+        // retieve start and end position with the user
         Game game = new Game();
+        System.out.println("Coordonnées du point de départ");
+        ArrayList startPositions;
 
-        // Check if position is OK on the map
-        ArrayList positions = game.inputPositions();
-        game.checkPositionsInMap(positions);
+        do {
+            startPositions = game.inputPositions();
+            // Vérifier si la position de départ est correcte sur la carte
+            if (!game.checkPositionsInMap(startPositions)) {
+                System.out.println("Coordonnées du point de départ");
+            }
+        } while (!game.checkPositionsInMap(startPositions));
+
+
+        System.out.println("Coordonnées du point d'arrivée");
+        ArrayList endPositions;
+
+        do {
+            endPositions = game.inputPositions();
+            // Vérifier si la position d'arrivée est correcte sur la carte
+            if (!game.checkPositionsInMap(endPositions)) {
+                System.out.println("Coordonnées du point d'arrivée");
+            }
+        } while (!game.checkPositionsInMap(endPositions));
+
 
     }
 }
@@ -26,7 +45,7 @@ public class Main {
 /*
 * 1) Ouvrir le fichier
 * 2) Parcourir le fichier ligne par ligne
-* 3) placer chaque caractère issus de chque ligne du fichier dans un tableau
+* 3) placer chaque caractère issus de chaque ligne du fichier dans un tableau
 *   -> tableau à 2 dimensions
 * 4) Afficher le tableau à 2 dimensions
 * 5) Demander à l'utilisateur de saisir des coordonnés de départ et d'arrivée
@@ -42,7 +61,7 @@ public class Main {
 *   -> Chaque char correspond à une case
 *       -> Récupérer les caps sous forme de 'STR' exemple : 'NNSSEOSS'
 *           -> Parcourir les caps 'char' par 'char'
-*           -> N = +1 / S = -1 / E= -1 / O= +1
+*           -> N = -1 / S = +1 / E= +1 / O= -1
 *
 *       Placer chaque cap dans une arraysList
 *           -> Pour chaque 'char', appliquer la valeur de déplacement horizontale / verticale
