@@ -39,4 +39,17 @@ public class UseTextFile {
 
         return car;
     }
+
+    // méthode pour afficher la carte de jeu
+    protected void displayMap(String map){
+    UseTextFile useTextFile = new UseTextFile();
+
+        for (Character[] row : useTextFile.mapPrinter(map)) {
+            System.out.print(" ");
+            for (Character ch : row) {
+                System.out.print(ch);
+            }
+        }
+    }
+
 }

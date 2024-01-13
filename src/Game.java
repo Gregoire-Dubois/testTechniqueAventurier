@@ -54,7 +54,7 @@ public class Game {
         Character[][] x = new Character[20][21];
         x = useTextFile.mapPrinter(map);
 
-        // vérifier si la cases est égale à # ou vide
+        // vérifier si la case est égale à # ou vide
         System.out.println(x[xPosition][yPosition]);
 
     }

@@ -10,18 +10,13 @@ public class Main {
 
         // ajout des caractères dans un tableau bi-dimensionnel et l'afficher
         // Afficher tous les éléments dans arrayMaker et afficher la carte de jeu
-        for (Character[] row : useTextFile.mapPrinter(map)) {
-            System.out.print(" ");
-            for (Character ch : row) {
-                System.out.print(ch);
-            }
-        }
+         useTextFile.displayMap(map);
 
         // retieve position with the user
         Game game = new Game();
-        ArrayList positions = game.inputPositions();
 
         // Check if position is OK on the map
+        ArrayList positions = game.inputPositions();
         game.checkPositionsInMap(positions);
 
     }
@@ -34,7 +29,7 @@ public class Main {
 * 3) placer chaque caractère issus de chque ligne du fichier dans un tableau
 *   -> tableau à 2 dimensions
 * 4) Afficher le tableau à 2 dimensions
-* 5) Demander à l'utilisateur de saisir des coordonnés de départ
+* 5) Demander à l'utilisateur de saisir des coordonnés de départ et d'arrivée
 *   -> Si coordonnées impossibles ou incorrectes faire une boucle pour demander de nouvelles coordonnées
 *   -> Si coordonnées OK
 *       -> Demander les coordonnées d'arrivée
