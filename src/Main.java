@@ -9,7 +9,7 @@ public class Main {
         String map = useTextFile.readFileText();
 
         // ajout des caractères dans un tableau bi-dimensionnel et l'afficher
-        // Afficher tous les éléments dans arrayMaker et afficher la carte de jeu
+        // Afficher la carte de jeu
          useTextFile.displayMap(map);
 
         // retieve start and end position with the user
@@ -38,7 +38,12 @@ public class Main {
         } while (!game.checkPositionsInMap(endPositions));
 
         Move move = new Move();
-        move.retrieveDirection();
+
+        ArrayList directions = move.retrieveDirections();
+
+        move.movePlayer(directions);
+
+
     }
 }
 
