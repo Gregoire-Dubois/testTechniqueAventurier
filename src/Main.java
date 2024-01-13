@@ -37,7 +37,8 @@ public class Main {
             }
         } while (!game.checkPositionsInMap(endPositions));
 
-
+        Move move = new Move();
+        move.retrieveDirection();
     }
 }
 
