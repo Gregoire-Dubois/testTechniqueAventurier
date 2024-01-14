@@ -37,11 +37,13 @@ public class Main {
             }
         } while (!game.checkPositionsInMap(endPositions));
 
+
         Move move = new Move();
 
         ArrayList directions = move.retrieveDirections();
 
-        move.movePlayer(startPositions, endPositions, directions, map);
+
+        move.movePlayer(startPositions, endPositions, directions, useTextFile.mapMaker(map));
 
     }
 }
@@ -66,11 +68,9 @@ public class Main {
 *   -> Chaque char correspond à une case
 *       -> Récupérer les caps sous forme de 'STR' exemple : 'NNSSEOSS'
 *           -> Parcourir les caps 'char' par 'char'
-*           -> N = -1 / S = +1 / E= +1 / O= -1
 *
-*       Placer chaque cap dans une arraysList
+**       Placer chaque cap dans une arraysList
 *           -> Pour chaque 'char', appliquer la valeur de déplacement horizontale / verticale
 *               -> utilisation d'une boucle for pour appliquer les valeurs de déplacement
 *
-* Idée : mettre un caractère particulier pour matérialiser le point de départ et le point d'arrivée (si les coordonnées sont valides)
 * */

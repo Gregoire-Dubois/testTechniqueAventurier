@@ -34,19 +34,7 @@ public class Move {
     }
 
     // réaliser les déplacements du joueur
-    protected void movePlayer(ArrayList startPoint, ArrayList endPoint, ArrayList directions, String map) {
-        // charger la map aussi en paramètres ?
-
-        /* déplacer le perso, créer une position intermédiaire ? position de départ
-         *           position de départ
-         *               incrément d'une case avec le cap donne la position intermédiaire
-         *               si la position intermédiaire place le personnage sur un # -> perdu
-         *               si la position est vide le perso continu ses déplacemements
-         *
-         *           si la position intermédiaire est égale à la position de fin -> gagné
-         *
-         * */
-
+    protected void movePlayer(ArrayList startPoint, ArrayList endPoint, ArrayList directions, Character[][] map) {
         // récupération des coordonnées de départ
         int startX = (int) startPoint.get(0);
         int startY = (int) startPoint.get(1);
@@ -59,74 +47,55 @@ public class Move {
         int intermediatePointX = startX;
         int intermediatePointY = startY;
 
-        System.out.println("inter X vaut -> "+ intermediatePointX);
-        System.out.println("inter X vaut -> "+ intermediatePointX);
-        System.out.println("start X vaut -> "+ startX);
-        System.out.println("inter y vaut -> "+ startY);
-        for (int i = 0; i < directions.size(); i++) {
+        for (int i = 1; i < directions.size(); i++) {
 
             Character orientation = (Character) directions.get(i);
 
             switch (orientation) {
                 case 'N':
                     //cap au nord = x actuel, y actuel-1
-
-                    intermediatePointX += 0;
-                    intermediatePointY -= 1;
-
-                    //si la position intermédiaire est déjà égale à la position d'arrivée, on s'arrête
-                    if (intermediatePointX == endX && intermediatePointY == endY) {
-                        break;
-                    }
+                    intermediatePointX  -= 1;
                     break;
 
                 case 'S':
                     //cap au sud = x actuel, y actuel +1
-
-                    intermediatePointX += 0;
-                    intermediatePointY += 1;
-
-                    //si la position intermédiaire est déjà égale à la position d'arrivée, on s'arrête
-                    if (intermediatePointX == endX && intermediatePointY == endY) {
-                        break;
-                    }
+                    intermediatePointX += 1;
                     break;
 
                 case 'E':
                     //cap à l'est = x actuel +1, y actuel
-
-                    intermediatePointX += 1;
-                    intermediatePointY += 0;
-
-                    //si la position intermédiaire est déjà égale à la position d'arrivée, on s'arrête
-                    if (intermediatePointX == endX && intermediatePointY == endY) {
-                        break;
-                    }
+                    intermediatePointY += 1;
                     break;
 
                 case 'O':
                     //cap à l'ouest x actuel -1, y actuel
-
-                    intermediatePointX -= 1;
-                    intermediatePointY += 0;
-
-                    //si la position intermédiaire est déjà égale à la position d'arrivée, on s'arrête
-                    if (intermediatePointX == endX && intermediatePointY == endY) {
-                        break;
-                    }
+                    intermediatePointY -= 1;
                     break;
             }
 
+            //si la position intermédiaire est égale à la position d'arrivée, le joueur a gagné
+            if (intermediatePointX == endX && intermediatePointY == endY){
+                System.out.println("Gagné :) ");
+                break;
+            }
+
             //vérifier si la position intermédiaire est à l'intérieur de la carte
-            if (intermediatePointX < 0 || intermediatePointX >= map.length() || intermediatePointY < 0 || intermediatePointY >= map.length()) {
+            if (intermediatePointX < 0 || intermediatePointX >= map.length
+                    || intermediatePointY < 0 || intermediatePointY >= map.length) {
                 //position intermédiaire hors de la carte
                 //perdu
-                System.out.println("Perdu, votre cap vous a fait sortir de la carte");
+                System.out.println("Perdu, votre cap vous a fait sortir de la carte :( ");
+                break;
+            }
 
+            // Vérifier que le personnage ne passe pas sur des zones interdites
+            Character[][] forest = new Character[20][21];
+            forest = map;
+            char tree = '#';
+            if (forest[intermediatePointX][intermediatePointY] == tree){
+                System.out.println("Perdu, votre parcours traverse la forêt impénétrable :( ");
                 break;
             }
         }
-        System.out.println(intermediatePointX);
-        System.out.println(intermediatePointY);
     }
 }

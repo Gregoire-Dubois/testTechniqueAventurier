@@ -48,9 +48,12 @@ public class Game {
 
         int xPosition = 0;
         int yPosition = 0;
+
         try{
             xPosition = (int) positions.get(0);
             yPosition = (int) positions.get(1);
+
+
         }catch (IndexOutOfBoundsException e){
             System.out.println("Seuls des nombres entiers situés entre 0 et 19 sont admis");
         }
@@ -63,6 +66,7 @@ public class Game {
 
         // vérifier si la case est égale à # ou vide
         System.out.println(topography[xPosition][yPosition]);
+
         if (topography[xPosition][yPosition] == '#'){
             System.out.println("===============================================================");
             System.out.println("Coordonnées impossibles, vous êtes dans la forêt impénétrable !");
