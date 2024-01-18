@@ -23,7 +23,7 @@ public class UseTextFile {
     }
 
 
-    // méthode pour récupérer chaque caractère de la string pour la placer dans un char dans un tableau à 2 dimensions
+    // Method for get caracteres in string and insert all string in CHAR in multidimensional array.
     protected Character[][] mapMaker(String readeDataTextFile){
         Character[][] map = new Character[20][21];
 
@@ -39,7 +39,7 @@ public class UseTextFile {
         return map;
     }
 
-    // méthode pour afficher la carte de jeu
+    // Display the map
     protected void displayMap(String map){
     UseTextFile useTextFile = new UseTextFile();
 

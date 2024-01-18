@@ -8,18 +8,17 @@ public class Main {
         UseTextFile useTextFile = new UseTextFile();
         String map = useTextFile.readFileText();
 
-        // ajout des caractères dans un tableau bi-dimensionnel et l'afficher
-        // Afficher la carte de jeu
+        // Add caracteres in multimensional array and display
+        // Display map
          useTextFile.displayMap(map);
 
         // retieve start and end position with the user
         Game game = new Game();
         System.out.println("Coordonnées du point de départ");
         ArrayList startPositions;
-
         do {
             startPositions = game.inputPositions();
-            // Vérifier si la position de départ est correcte sur la carte
+            // Check if start position is OK
             if (!game.checkPositionsInMap(startPositions)) {
                 System.out.println("Coordonnées du point de départ");
             }
@@ -31,7 +30,7 @@ public class Main {
 
         do {
             endPositions = game.inputPositions();
-            // Vérifier si la position d'arrivée est correcte sur la carte
+            // Check if arrival position is OK
             if (!game.checkPositionsInMap(endPositions)) {
                 System.out.println("Coordonnées du point d'arrivée");
             }
@@ -42,9 +41,7 @@ public class Main {
 
         ArrayList directions = move.retrieveDirections();
 
-
         move.movePlayer(startPositions, endPositions, directions, useTextFile.mapMaker(map));
-
     }
 }
 

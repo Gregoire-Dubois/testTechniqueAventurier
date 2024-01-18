@@ -33,17 +33,21 @@ public class Move {
         return listDirections;
     }
 
-    // réaliser les déplacements du joueur
+    // to move player
     protected void movePlayer(ArrayList startPoint, ArrayList endPoint, ArrayList directions, Character[][] map) {
         // récupération des coordonnées de départ
         int startX = (int) startPoint.get(0);
         int startY = (int) startPoint.get(1);
+        System.out.println("start x vaut" + startX );
+        System.out.println("start y vaut" + startY );
 
-        // récupération des coordonnées d'arrivées
+        // get end position
         int endX = (int) endPoint.get(0);
         int endY = (int) endPoint.get(1);
+        System.out.println("end x vaut" + endX );
+        System.out.println("end Y vaut" + endY );
 
-        // point intermediaire pour faire déplacer de case en case
+        // Intermedaite point to move player box by box
         int intermediatePointX = startX;
         int intermediatePointY = startY;
 
@@ -53,33 +57,36 @@ public class Move {
 
             switch (orientation) {
                 case 'N':
-                    //cap au nord = x actuel, y actuel-1
+                    // nord = x actuel, y actuel-1
                     intermediatePointX  -= 1;
                     break;
 
                 case 'S':
-                    //cap au sud = x actuel, y actuel +1
+                    // sud = x actuel, y actuel +1
                     intermediatePointX += 1;
                     break;
 
                 case 'E':
-                    //cap à l'est = x actuel +1, y actuel
+                    //l'est = x actuel +1, y actuel
                     intermediatePointY += 1;
                     break;
 
                 case 'O':
-                    //cap à l'ouest x actuel -1, y actuel
+                    //l'ouest x actuel -1, y actuel
                     intermediatePointY -= 1;
                     break;
             }
 
-            //si la position intermédiaire est égale à la position d'arrivée, le joueur a gagné
+            System.out.println("intermediaire X vaut" + intermediatePointX );
+            System.out.println("intermediaire Y vaut" + intermediatePointY );
+
+            // If intermediate position equal arrival position -> It's win
             if (intermediatePointX == endX && intermediatePointY == endY){
                 System.out.println("Gagné :) ");
                 break;
             }
 
-            //vérifier si la position intermédiaire est à l'intérieur de la carte
+            // Check if intermediate position is in map
             if (intermediatePointX < 0 || intermediatePointX >= map.length
                     || intermediatePointY < 0 || intermediatePointY >= map.length) {
                 //position intermédiaire hors de la carte
@@ -88,7 +95,7 @@ public class Move {
                 break;
             }
 
-            // Vérifier que le personnage ne passe pas sur des zones interdites
+            // Check if player don't go in forbiden areas
             Character[][] forest = new Character[20][21];
             forest = map;
             char tree = '#';

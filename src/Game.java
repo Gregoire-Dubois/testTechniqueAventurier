@@ -63,6 +63,7 @@ public class Game {
 
         Character[][] topography = new Character[20][21];
         topography = useTextFile.mapMaker(map);
+        System.out.println(topography[xPosition][yPosition]);
 
         // vérifier si la case est égale à # ou vide
         System.out.println(topography[xPosition][yPosition]);
