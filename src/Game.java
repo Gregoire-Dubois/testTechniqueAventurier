@@ -42,8 +42,8 @@ public class Game {
     }
 
     protected boolean checkPositionsInMap(ArrayList positions) throws IOException {
-        // ici tester que les coordonnées saisies ne tombent pas sur des zones interdites
-        // récupérer le tableau de données pour vérifier si les coordonnées sont # ou vides
+        // Check if coordinates are not in forbiden zones
+        // retrieve array of data and check if coordinates ar '#' or empty
         Boolean responsePosition = true;
 
         int xPosition = 0;
@@ -52,7 +52,6 @@ public class Game {
         try{
             xPosition = (int) positions.get(0);
             yPosition = (int) positions.get(1);
-
 
         }catch (IndexOutOfBoundsException e){
             System.out.println("Seuls des nombres entiers situés entre 0 et 19 sont admis");
@@ -65,7 +64,7 @@ public class Game {
         topography = useTextFile.mapMaker(map);
 
         // Check if case contain '#' or is empty
-        //System.out.println(topography[xPosition][yPosition]);
+        // System.out.println(topography[xPosition][yPosition]);
 
         if (topography[xPosition][yPosition] == '#'){
             System.out.println("===============================================================");

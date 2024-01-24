@@ -12,44 +12,34 @@ public class Coordonnees {
     protected ArrayList retrieveStartCoordinates() throws IOException {
         // call class Game
         Game game = new Game();
-
-        System.out.println("Coordonnées du point de départ");
         ArrayList startPositions;
+        boolean invalidStartCoordinates;
+
         do {
+            System.out.println("Coordonnées du point de départ");
             startPositions = game.inputPositions();
-            // Check if start position is OK
-            if (!game.checkPositionsInMap(startPositions)) {
-                System.out.println("Coordonnées du point de départ");
-            }
-        } while (!game.checkPositionsInMap(startPositions));
+            invalidStartCoordinates = !game.checkPositionsInMap(startPositions);
+
+        } while (invalidStartCoordinates);
 
         return startPositions;
-
     }
 
-    protected ArrayList retrieveEndCorrdinates() throws IOException {
+    protected ArrayList retrieveEndCoordinates() throws IOException {
         // call class Game
         Game game = new Game();
-
-        System.out.println("Coordonnées du point d'arrivée");
         ArrayList endPositions;
+        boolean invalidEndCoordinates;
 
         do {
+            System.out.println("Coordonnées du point d'arrivée");
             endPositions = game.inputPositions();
-            // Check if arrival position is OK
-            if (!game.checkPositionsInMap(endPositions)) {
-                System.out.println("Coordonnées du point d'arrivée");
-            }
-        } while (!game.checkPositionsInMap(endPositions));
+            invalidEndCoordinates = !game.checkPositionsInMap(endPositions);
+
+        } while (invalidEndCoordinates);
 
         return endPositions;
     }
-
 }
 
-
-
-/* TODO
-* méthodes de tests pour les dépassements de tableaux au lieu d'une gestion par ArrayList)
-* */
 

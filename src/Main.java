@@ -15,7 +15,7 @@ public class Main {
         // retrieve start and end position with the user
         Coordonnees coordonnees = new Coordonnees();
         ArrayList startPositions = coordonnees.retrieveStartCoordinates();
-        ArrayList endPositions = coordonnees.retrieveEndCorrdinates();
+        ArrayList endPositions = coordonnees.retrieveEndCoordinates();
 
         // make move player
         Move move = new Move();
