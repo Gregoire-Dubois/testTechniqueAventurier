@@ -46,7 +46,9 @@ public class UseTextFile {
         for (Character[] row : useTextFile.mapMaker(map)) {
             System.out.print(" ");
             for (Character ch : row) {
-                System.out.print(ch);
+                if (ch != null){
+                    System.out.print(ch);
+                }
             }
         }
     }

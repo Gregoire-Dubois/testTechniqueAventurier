@@ -17,7 +17,7 @@ public class Main {
         ArrayList startPositions = coordonnees.retrieveStartCoordinates();
         ArrayList endPositions = coordonnees.retrieveEndCorrdinates();
 
-
+        // make move player
         Move move = new Move();
         ArrayList directions = move.retrieveDirections();
         move.movePlayer(startPositions, endPositions, directions, useTextFile.mapMaker(map));
