@@ -42,7 +42,7 @@ public class Game {
     }
 
     protected boolean checkPositionsInMap(ArrayList positions) throws IOException {
-        // ici tester que les coordonées saisies ne tombent pas sur des zones interdites
+        // ici tester que les coordonnées saisies ne tombent pas sur des zones interdites
         // récupérer le tableau de données pour vérifier si les coordonnées sont # ou vides
         Boolean responsePosition = true;
 
@@ -63,10 +63,9 @@ public class Game {
 
         Character[][] topography = new Character[20][21];
         topography = useTextFile.mapMaker(map);
-        System.out.println(topography[xPosition][yPosition]);
 
         // vérifier si la case est égale à # ou vide
-        System.out.println(topography[xPosition][yPosition]);
+        //System.out.println(topography[xPosition][yPosition]);
 
         if (topography[xPosition][yPosition] == '#'){
             System.out.println("===============================================================");
@@ -77,6 +76,4 @@ public class Game {
         }
         return responsePosition;
     }
-
-
 }

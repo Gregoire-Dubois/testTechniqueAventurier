@@ -19,7 +19,7 @@ public class Move {
             if (input.equals("q")) {
                 break;
             }
-            // Vérifier si l'entrée a une longueur d'un seul caractère
+            // Check if input is 1 charactere
             if (input.length() == 1) {
                 if ("NSEO".contains(input.toUpperCase())) {
                     listDirections.add(input.toUpperCase().charAt(0));
@@ -35,19 +35,15 @@ public class Move {
 
     // to move player
     protected void movePlayer(ArrayList startPoint, ArrayList endPoint, ArrayList directions, Character[][] map) {
-        // récupération des coordonnées de départ
+        // Get start positionnate
         int startX = (int) startPoint.get(0);
         int startY = (int) startPoint.get(1);
-        System.out.println("start x vaut" + startX );
-        System.out.println("start y vaut" + startY );
 
         // get end position
         int endX = (int) endPoint.get(0);
         int endY = (int) endPoint.get(1);
-        System.out.println("end x vaut" + endX );
-        System.out.println("end Y vaut" + endY );
 
-        // Intermedaite point to move player box by box
+        // Intermediate point to move player box by box
         int intermediatePointX = startX;
         int intermediatePointY = startY;
 
@@ -77,9 +73,6 @@ public class Move {
                     break;
             }
 
-            System.out.println("intermediaire X vaut" + intermediatePointX );
-            System.out.println("intermediaire Y vaut" + intermediatePointY );
-
             // If intermediate position equal arrival position -> It's win
             if (intermediatePointX == endX && intermediatePointY == endY){
                 System.out.println("Gagné :) ");
@@ -89,13 +82,12 @@ public class Move {
             // Check if intermediate position is in map
             if (intermediatePointX < 0 || intermediatePointX >= map.length
                     || intermediatePointY < 0 || intermediatePointY >= map.length) {
-                //position intermédiaire hors de la carte
-                //perdu
+                // intermediate position out of map => game over
                 System.out.println("Perdu, votre cap vous a fait sortir de la carte :( ");
                 break;
             }
 
-            // Check if player don't go in forbiden areas
+            // Check if player don't go in forbiden area
             Character[][] forest = new Character[20][21];
             forest = map;
             char tree = '#';

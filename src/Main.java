@@ -10,43 +10,23 @@ public class Main {
 
         // Add caracteres in multimensional array and display
         // Display map
-         useTextFile.displayMap(map);
+        useTextFile.displayMap(map);
 
-        // retieve start and end position with the user
-        Game game = new Game();
-        System.out.println("Coordonnées du point de départ");
-        ArrayList startPositions;
-        do {
-            startPositions = game.inputPositions();
-            // Check if start position is OK
-            if (!game.checkPositionsInMap(startPositions)) {
-                System.out.println("Coordonnées du point de départ");
-            }
-        } while (!game.checkPositionsInMap(startPositions));
-
-
-        System.out.println("Coordonnées du point d'arrivée");
-        ArrayList endPositions;
-
-        do {
-            endPositions = game.inputPositions();
-            // Check if arrival position is OK
-            if (!game.checkPositionsInMap(endPositions)) {
-                System.out.println("Coordonnées du point d'arrivée");
-            }
-        } while (!game.checkPositionsInMap(endPositions));
+        // retrieve start and end position with the user
+        Coordonnees coordonnees = new Coordonnees();
+        ArrayList startPositions = coordonnees.retrieveStartCoordinates();
+        ArrayList endPositions = coordonnees.retrieveEndCorrdinates();
 
 
         Move move = new Move();
-
         ArrayList directions = move.retrieveDirections();
-
         move.movePlayer(startPositions, endPositions, directions, useTextFile.mapMaker(map));
     }
 }
 
-
 /*
+
+Pseudo Code
 * 1) Ouvrir le fichier
 * 2) Parcourir le fichier ligne par ligne
 * 3) placer chaque caractère issus de chaque ligne du fichier dans un tableau
@@ -56,7 +36,7 @@ public class Main {
 *   -> Si coordonnées impossibles ou incorrectes faire une boucle pour demander de nouvelles coordonnées
 *   -> Si coordonnées OK
 *       -> Demander les coordonnées d'arrivée
-*               -> Si coordonées impossibles ou incorrectes boucler pour demander d'autres coordonnées
+*               -> Si coordonnées impossibles ou incorrectes boucler pour demander d'autres coordonnées
 *                   -> n'accepter que des valeurs numériques entre 0 et 19
 *                   -> exclure les autres caractères
 *
