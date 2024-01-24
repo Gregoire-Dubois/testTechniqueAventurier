@@ -1,4 +1,8 @@
-import java.io.*;
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.File;
+
 public class UseTextFile {
 
     // Constructor by default
@@ -44,7 +48,7 @@ public class UseTextFile {
     UseTextFile useTextFile = new UseTextFile();
 
         for (Character[] row : useTextFile.mapMaker(map)) {
-            System.out.print(" ");
+            //System.out.print(" ");
             for (Character ch : row) {
                 if (ch != null){
                     System.out.print(ch);

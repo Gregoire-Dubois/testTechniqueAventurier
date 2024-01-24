@@ -19,7 +19,7 @@ public class Move {
             if (input.equals("q")) {
                 break;
             }
-            // Check if input is 1 charactere
+            // Check if input is 1 character
             if (input.length() == 1) {
                 if ("NSEO".contains(input.toUpperCase())) {
                     listDirections.add(input.toUpperCase().charAt(0));
@@ -68,7 +68,7 @@ public class Move {
                     break;
 
                 case 'O':
-                    //l'ouest x actuel -1, y actuel
+                    //l'ouest = x actuel -1, y actuel
                     intermediatePointY -= 1;
                     break;
             }
@@ -87,7 +87,7 @@ public class Move {
                 break;
             }
 
-            // Check if player don't go in forbiden area
+            // Check if player go in forbiden area
             Character[][] forest = new Character[20][21];
             forest = map;
             char tree = '#';
